@@ -36,24 +36,25 @@
 }
 
 .icon-marker {
-
   display: flex;
   position: relative;
   justify-content: center;
   align-items: center;
   color: white;
-  width: 3.6em;
-  height: 3.6em;
-  font-size: .7em;
-  font-weight: bold;
-  background-color: $red-800;
+  width: 3.8em;
+  height: 3.8em;
+  font-size: .75em;
+  letter-spacing: 0.1em;
+  background-color: #b71c1c;
   border-radius: 100%;
-  box-shadow: 0 2px 5px rgba(black, .9);
+  box-shadow: 0 3px 5px rgba(0, 0, 1, 0.5);
 
   &:hover {
+      border: 1px solid rgba(0, 0, 1, 0.8);
 
     .icon-marker-tooltip {
       display: block;
+      
     }
 
   }
@@ -68,10 +69,10 @@
   width: 16em;
   font-size: 1.4em;
   padding: 1em;
-  background-color: $blue-grey-900;
+  background-color: $grey-900;
   border-radius: .4em;
   margin-bottom: 1em;
-  box-shadow: 0 3px 5px rgba(black, .9);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, .6);
 
   &:before {
     display: block;
@@ -81,14 +82,14 @@
     content: '';
     width: 1.4em;
     height: 1.4em;
-    background-color: $blue-grey-900;
+    background-color: $grey-900;
     transform: rotate(45deg);
     margin-left: -.7em;
   }
 
   h2 {
     font-size: 1.5em;
-    line-height: 1.2;
+    line-height: 1;
     margin-bottom: .1em;
     margin-top: 0;
   }
