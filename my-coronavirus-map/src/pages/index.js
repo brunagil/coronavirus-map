@@ -10,20 +10,17 @@ const LOCATION = {
   lng: 0,
 };
 const CENTER = [LOCATION.lat, LOCATION.lng];
-const DEFAULT_ZOOM = 2;
+const DEFAULT_ZOOM = 3;
+const MIN_ZOOM = 2;
+const API = "https://corona.lmao.ninja/v2/countries"
 
 const IndexPage = () => {
-  /**
-   * mapEffect
-   * @description Fires a callback once the page renders
-   * @example Here this is and example of being used to zoom in and set a popup on load
-   */
 
   async function mapEffect({ leafletElement: map } = {}) {
     let response;
 
     try {
-      response = await axios.get("https://corona.lmao.ninja/v2/countries");
+      response = await axios.get(API);
     } catch (err) {
       console.log("erro", err);
       return;
@@ -72,17 +69,17 @@ const IndexPage = () => {
         }
 
         const html = `
-        <span class="icon-marker">
-          <span class="icon-marker-tooltip">
-            <h2>${country}</h2>
-            <ul>
-              <li><strong>Confirmed:</strong> ${cases}</li>
-              <li><strong>Deaths:</strong> ${deaths}</li>
-              <li><strong>Recovered:</strong> ${recovered}</li>
-              <li><strong>Last Update:</strong> ${updatedFormatted}</li>
-            </ul>
-          </span>
-          ${casesString}
+            <span class="icon-marker">
+            <span class="icon-marker-tooltip">
+              <h2>${country}</h2>
+              <ul>
+                <li><strong>Confirmed:</strong> ${cases}</li>
+                <li><strong>Deaths:</strong> ${deaths}</li>
+                <li><strong>Recovered:</strong> ${recovered}</li>
+                <li><strong>Last Update:</strong> ${updatedFormatted}</li>
+              </ul>
+            </span>
+            ${casesString}
         </span>
       `;
 
@@ -95,7 +92,7 @@ const IndexPage = () => {
         });
       },
     });
-
+    
     geoJsonLayers.addTo(map);
   }
 
@@ -103,13 +100,14 @@ const IndexPage = () => {
     center: CENTER,
     defaultBaseMap: "OpenStreetMap",
     zoom: DEFAULT_ZOOM,
+    minZoom: MIN_ZOOM,
     mapEffect,
   };
 
   return (
     <Layout pageName="home">
       <Helmet>
-        <title>Home Page</title>
+        <title>Home</title>
       </Helmet>
 
       <Map {...mapSettings} />
